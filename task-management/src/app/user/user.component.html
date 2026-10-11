@@ -1,0 +1,20 @@
+<div>
+  <button (click)="onSelectUser()">
+    <!-- {{string interpolation}} -->
+    <!-- <img [src]="'users/' + selectedUser[0].avatar" [alt]="selectedUser[0].name" /> -->
+    <!-- > no-signal -->
+    <!-- <img [src]="'users/' + selectedUser.avatar" [alt]="selectedUser.name" /> -->
+    <!-- > with-signal -->
+    <!-- <img [src]="'users/' + selectedUser().avatar" [alt]="selectedUser().name" /> -->
+    <!-- > With-Computed signals -->
+    <!-- <img [src]="selectUserAvatar()" [alt]="selectedUser().name" /> -->
+    <!-- <span>{{ selectedUser().name }}</span> -->
+
+	<!-- >>> Signals -->
+    <!-- <img [src]="imagePath()" [alt]="Name()"/>
+    <span> {{ Name() }} </span> -->
+
+	<img [src]="imagePath" [alt]="Name"/>
+    <span> {{ Name }} </span>
+  </button>
+</div>
