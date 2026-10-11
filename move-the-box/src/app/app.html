@@ -1,0 +1,8 @@
+<main class="h-screen flex items-center flex-col screen bg-stone-900">
+  <app-box [boxName]="boxName"></app-box>
+
+  <div class="flex w-full justify-around">
+    <app-box-controller [NewBoxPosition]=-20 [ButtonName]="leftButtonName"></app-box-controller>
+    <app-box-controller [NewBoxPosition]=20 [ButtonName]="rightButtonName"></app-box-controller>
+  </div>
+</main>
