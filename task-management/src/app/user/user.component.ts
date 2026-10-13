@@ -1,8 +1,24 @@
-import { Component, computed, input, Input, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  EventEmitter,
+  input,
+  Input,
+  output,
+  Output,
+  signal,
+} from '@angular/core';
+import { required } from '@angular/forms/signals';
 
 // import { DUMMY_USERS } from './dummy-users';
 
 // const randIdx = Math.floor(Math.random() * DUMMY_USERS.length);
+
+type user = {
+  id: string;
+  avatar: string;
+  name: string;
+};
 
 @Component({
   imports: [],
@@ -42,22 +58,36 @@ export class UserComponent {
 		NOTE >>> every component used will set the Avatar input.
 		- {required} IN the Input make value required.
   */
-    @Input({required: true}) Avatar!: string;
-    @Input({required: true}) Name!: string;
+  // @Input({ required: true }) Id!: string;
+  // @Input({ required: true }) Avatar!: string;
+  // @Input({ required: true }) Name!: string;
+  @Input({ required: true }) user!: user;
 
-    get imagePath() {
-      return 'users/' + this.Avatar;
-    }
+  // -------------------------------------------
+  // @Output({required: true});
+  // @Output() selectUser = new EventEmitter();
+  @Output() selectUser = new EventEmitter<string>();
+  // selectUser = output<string>();  // using output func
+
+  selectUserId() {
+    this.selectUser.emit(this.user.id);
+  }
+
+  // -------------------------------------------
+
+  get imagePath() {
+    return 'users/' + this.user.avatar;
+  }
 
   //  >>> Signal
-//   Avatar = input.required<string>();
-//   Name = input.required<string>();
+  //   Avatar = input.required<string>();
+  //   Name = input.required<string>();
 
-//   imagePath = computed(() => {
-//     return 'users/' + this.Avatar();
-//   });
+  //   imagePath = computed(() => {
+  //     return 'users/' + this.Avatar();
+  //   });
 
-  onSelectUser() {
-    console.log(`clicked to user =>f ${this.Name}`);
-  }
+  // onSelectUser() {
+  //   console.log(`clicked to user =>f ${this.Name}`);
+  // }
 }

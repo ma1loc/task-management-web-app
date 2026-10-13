@@ -1,0 +1,16 @@
+<section id="tasks">
+  <header>
+    <h2>{{ getUserNameUsingUserId() }}'s task</h2>
+    <menu>
+      <button>Tasks</button>
+    </menu>
+  </header>
+
+  <ul>
+    @for (task of dummyTask; track task.id) {
+      <li>
+        <app-task />
+      </li>
+    }
+  </ul>
+</section>

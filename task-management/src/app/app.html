@@ -9,23 +9,65 @@
       <app-user [Avatar]="selectedUsers[0].avatar" [Name]="selectedUsers[0].name"/>
     </li>
 	<li> -->
-    <li>
-      <app-user [Avatar]="selectedUsers[0].avatar" [Name]="selectedUsers[0].name" />
-    </li>
-    <li>
-      <app-user [Avatar]="selectedUsers[1].avatar" [Name]="selectedUsers[1].name" />
-    </li>
-    <li>
-      <app-user [Avatar]="selectedUsers[2].avatar" [Name]="selectedUsers[2].name" />
-    </li>
-    <li>
-      <app-user [Avatar]="selectedUsers[3].avatar" [Name]="selectedUsers[3].name" />
-    </li>
-    <li>
-      <app-user [Avatar]="selectedUsers[4].avatar" [Name]="selectedUsers[4].name" />
-    </li>
-    <li>
-      <app-user [Avatar]="selectedUsers[5].avatar" [Name]="selectedUsers[5].name" />
-    </li>
+
+    <!-- TODO: For loop -->
+    @for (_user_ of selectedUsers; track _user_.id) {
+      <li>
+        <app-user [user]="_user_" (selectUser)="onSelectUser($event)"></app-user>
+      </li>
+    }
+
+    <!-- <li>
+      <app-user
+        /* [Id]="selectedUsers[1].id"
+        [Avatar]="selectedUsers[1].avatar"
+        [Name]="selectedUsers[1].name" */
+        [user]="selectedUsers[1]"
+        (selectUser)="onSelectUser($event)"
+      />
+    </li> -->
+    <!-- <li>
+      <app-user
+        /* [Id]="selectedUsers[2].id"
+        [Avatar]="selectedUsers[2].avatar"
+        [Name]="selectedUsers[2].name" */
+        [user]="selectedUsers[2]"
+        (selectUser)="onSelectUser($event)"
+      />
+    </li> -->
+    <!-- <li>
+      <app-user
+        /* [Id]="selectedUsers[3].id"
+        [Avatar]="selectedUsers[3].avatar"
+        [Name]="selectedUsers[3].name" */
+        [user]="selectedUsers[3]"
+        (selectUser)="onSelectUser($event)"
+      />
+    </li> -->
+    <!-- <li>
+      <app-user
+        /* [Id]="selectedUsers[4].id"
+        [Avatar]="selectedUsers[4].avatar"
+        [Name]="selectedUsers[4].name" */
+        [user]="selectedUsers[4]"
+        (selectUser)="onSelectUser($event)"
+      />
+    </li> -->
+    <!-- <li>
+      <app-user
+        /* [Id]="selectedUsers[5].id"
+        [Avatar]="selectedUsers[5].avatar"
+        [Name]="selectedUsers[5].name" */
+        [user]="selectedUsers[5]"
+        (selectUser)="onSelectUser($event)"
+      />
+    </li> -->
   </ul>
+
+  <!-- here will be the user events -->
+  @if (getDefultUserId) {
+    <app-tasks [userId]="getDefultUserId" ></app-tasks>
+  } @else {
+    <p class="SelectUser">Select a user</p>
+  }
 </main>
