@@ -1,17 +1,18 @@
-import { Component } from '@angular/core';
-
-// type task = {
-//   userId: string;
-//   taskId: string;
-//   title: string;
-//   timer: string;
-//   summary: string;
-// };
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { type task } from './user.model';
+import { DatePipe } from '@angular/common';
 
 @Component({
-  imports: [],
+  imports: [DatePipe],
   selector: 'app-task',
   styleUrl: './task.component.css',
   templateUrl: './task.component.html',
 })
-export class TaskComponent {}
+export class TaskComponent {
+  @Input() Usertask!: task;
+  @Output() complite = new EventEmitter<string>();
+
+  onComplitedClick() {
+    this.complite.emit(this.Usertask.id);
+  }
+}

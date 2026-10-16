@@ -13,7 +13,7 @@
     <!-- TODO: For loop -->
     @for (_user_ of selectedUsers; track _user_.id) {
       <li>
-        <app-user [user]="_user_" (selectUser)="onSelectUser($event)"></app-user>
+        <app-user [selected]="_user_.id === this.userId" [user]="_user_" (selectUser)="onSelectUser($event)"></app-user>
       </li>
     }
 

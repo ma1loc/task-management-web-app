@@ -1,15 +1,21 @@
+
+<!-- here will add the add task button -->
+@if (isAddedTaskClicked) {
+  <app-add-task (cancel)="onToggel()" (add)="UsersTasks.addNewTask($event, userId); onToggel() "/>
+}
+
 <section id="tasks">
   <header>
     <h2>{{ getUserNameUsingUserId() }}'s task</h2>
     <menu>
-      <button>Tasks</button>
+      <button (click)="onToggel()">{{TaskButtonName}}</button>
     </menu>
   </header>
 
   <ul>
-    @for (task of dummyTask; track task.id) {
+    @for (task of UsersTasks.getUserTasks(userId); track task.id) {
       <li>
-        <app-task />
+        <app-task [Usertask]="task" (complite)="UsersTasks.deleteUserTask($event)"/>
       </li>
     }
   </ul>

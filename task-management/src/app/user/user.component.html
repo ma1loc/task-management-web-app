@@ -1,5 +1,5 @@
 <div>
-  <button (click)="selectUserId()">
+  <button [class.active]="selected" (click)="selectUserId()">
     <!-- {{string interpolation}} -->
     <!-- <img [src]="'users/' + selectedUser[0].avatar" [alt]="selectedUser[0].name" /> -->
     <!-- > no-signal -->
@@ -10,11 +10,11 @@
     <!-- <img [src]="selectUserAvatar()" [alt]="selectedUser().name" /> -->
     <!-- <span>{{ selectedUser().name }}</span> -->
 
-	<!-- >>> Signals -->
+    <!-- >>> Signals -->
     <!-- <img [src]="imagePath()" [alt]="Name()"/>
     <span> {{ Name() }} </span> -->
 
-	<img [src]="imagePath" [alt]="user.name"/>
+    <img [src]="imagePath" [alt]="user.name" />
     <span> {{ user.name }} </span>
   </button>
 </div>

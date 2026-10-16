@@ -1,8 +1,8 @@
 <article>
-  <h2>Title</h2>
-  <time>Timer</time>
-  <p>Summary</p>
+  <h2>{{Usertask.title}}</h2>
+  <time>{{Usertask.dueDate | date:'full'}}</time>
+  <p>{{Usertask.summary}}</p>
   <p class="actions">
-    <button>Complite</button>
+    <button (click)="onComplitedClick()">Complite</button>
   </p>
 </article>
