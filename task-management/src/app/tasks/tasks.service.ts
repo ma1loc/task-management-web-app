@@ -1,7 +1,11 @@
 import { task } from './task/user.model';
 import { new_task } from './add-task/add-task.model';
-import { dateTimestampProvider } from 'rxjs/internal/scheduler/dateTimestampProvider';
+import { Injectable } from '@angular/core';
+import { ThisReceiver } from '@angular/compiler';
 
+@Injectable({
+  providedIn: 'root',
+})
 export class tasksService {
   private dummyTasks = [
     {
@@ -27,6 +31,13 @@ export class tasksService {
     },
   ];
 
+  constructor() {
+    const tasks = localStorage.getItem('tasks');
+    if (tasks) {
+      this.dummyTasks = JSON.parse(tasks);
+    }
+  }
+
   // get getTasksList() {
   //   return this.dummyTasks;
   // }
@@ -36,8 +47,14 @@ export class tasksService {
     return this.dummyTasks.filter((user) => user.userId === userId);
   }
 
+  // Create a method that will be saving out updates
+  private saveItems() {
+    localStorage.setItem('tasks', JSON.stringify(this.dummyTasks));
+  }
+
   deleteUserTask(Id: string) {
     this.dummyTasks = this.dummyTasks.filter((t) => t.id !== Id);
+    this.saveItems();
   }
 
   addNewTask(newTask: new_task, userId: string): void {
@@ -48,5 +65,6 @@ export class tasksService {
       summary: newTask.summary,
       dueDate: newTask.date,
     });
+    this.saveItems();
   }
 }
